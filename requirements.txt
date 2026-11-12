@@ -1,0 +1,14 @@
+# Tested on Python 3.8 / Windows with the versions noted in the comments.
+# Newer versions are expected to work; the floors are what the code needs.
+
+numpy>=1.21          # 1.21.5 tested
+scipy>=1.7           # 1.9.1 tested  (utils.py: fft, linalg, ndimage, optimize, signal, spatial)
+scikit-learn>=1.0    # 1.1.2 tested  (utils.py: DBSCAN, KMeans, MeanShift, silhouette_score)
+scikit-image>=0.19   # 0.19.3 tested (image exposure / io in the acquisition path)
+opencv-python>=4.5   # 4.6.0 tested  (image handling, keypoint annotation)
+matplotlib>=3.5      # 3.5.1 tested  (training figures)
+torch>=1.8           # 1.8.2 tested  (SAC networks; CPU is enough for the simulators)
+gym==0.26.2          # the code uses `from gym import spaces`; do not switch to gymnasium
+pygame>=2.1          # 2.1.0 tested  (only for the interactive view in env.py; optional)
+PyYAML>=6.0          # 6.0 tested    (config.yaml in AI_Tip_TPM_Main_fixed.py)
+tqdm>=4.60           # 4.64 tested   (progress bar in BO.py; optional, falls back)

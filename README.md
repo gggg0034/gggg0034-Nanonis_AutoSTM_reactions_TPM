@@ -33,26 +33,7 @@ Tested with Python 3.8, PyTorch 1.8.2, gym 0.26.2, OpenCV 4.6, NumPy 1.21, on Wi
 
 ---
 
-## 2. Simulation or instrument: which file is which
-
-| File | What it does | Instrument needed | How to run |
-|---|---|---|---|
-| `env.py` | the virtual tip-operation environment: molecule, tip, pulse, stochastic outcome | **no** | imported by `SAC.py` and `BO.py` |
-| `SAC.py` | the SAC agent **and** its training loop, acting in `env.py` | **no** | `python SAC.py` |
-| `BO.py` | the Gaussian-process Bayesian-optimisation baseline, acting in `env.py` | **no** | `python BO.py` |
-| `demo_pipeline.py` | one pass of the workflow on a recorded scan: image → keypoints → parameters → outcome | **no** | `python demo_pipeline.py` |
-| `train_sim.py` | wrapper around `SAC.py`: quiet log, CLI options, end-of-run summary | **no** | `python train_sim.py` |
-| `run_bo.py` | wrapper around `BO.py`: configuration of Supplementary Table 4, CLI options, summary | **no** | `python run_bo.py` |
-| `tools/compare_sac_bo.py` | both methods, same budget, one figure (diagnostic) | **no** | `python tools/compare_sac_bo.py` |
-| `AI_Tip_TPM_Main.py` | the autonomous experiment: scan, recognise, decide, pulse | **yes** | `python AI_Tip_TPM_Main.py --real` |
-| `AI_Tip_TPM_Main_fixed.py` | same, with a fixed pattern and no agent | **yes** | `python AI_Tip_TPM_Main_fixed.py --real` |
-| `Auto_scan_class.py` | scanning, tip approach, pulsing, image handling — the instrument class | **yes** | used by the two entry points above |
-| `core.py` | instrument controller on top of the TCP protocol | **yes** | " |
-| `interface.py` | the Nanonis TCP protocol | **yes** | " |
-| `SAC_H_nanonis.py` | the same SAC networks as `SAC.py`, but coupled to the running instrument through queues | **yes** | " |
-| `env_TPM.py` | multi-site state and parameter grid used on the instrument side | **yes** | " |
-| `molecule_registry.py`, `mol_vis.py` | molecule bookkeeping, drift correction, keypoint heatmaps | **yes** | " |
-| `utils.py` | image, geometry and fitting helpers | shared | used by both halves |
+## 2. Simulation or instrument
 
 Rule of thumb: **`AI_Tip_TPM_*.py` and the instrument class behind it need the microscope;
 `SAC.py`, `BO.py`, `env.py` and `demo_pipeline.py` do not.**
